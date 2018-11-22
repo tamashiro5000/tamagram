@@ -1,0 +1,93 @@
+  <header>
+    <div class="navbar navbar-dark bg-primary box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <strong>Tamagram</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-sign-out"></span>
+            </button>
+        </div>
+    </div>
+  </header>
+
+
+
+
+<h2><%= @message %></h2>
+
+
+
+<% if @name %>
+
+
+
+
+  <div class="hoge">
+    <p><%= @name %>さん、こんにちわ</p>
+  </div>
+
+
+  <main role="main">
+
+      <section class="jumbotron text-center">
+          <div class="container">
+            <form action="/form" method="POST" enctype="multipart/form-data" autocomplete="off">
+              <div class="container form-group">
+                <input type="text" name="title" class="form-control" placeholder="タイトルを入力してください。">
+                <input type="file" name="file" id="file" required>
+                <input type="submit" value="投稿する">
+              </div>
+            </form>
+          </div>
+      </section>
+
+
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <% @posts.each do |post| %>
+              <div class="view col-6 col-md-6 col-lg-4 col-xl-4">
+                <div class="card mb-4 box-shadow">
+                  <img src="/image/<%= post['image'] %>">
+                    <div class="card-body">
+                      <p class="card-text"><%= post['title'] %></p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+  </main>
+
+
+
+
+
+  <footer class="hoge">
+    <a href="/logout">ログアウト</a>
+  </footer>
+
+
+<% else %>
+
+  <div class="hoge">
+    <p><a href="/login">こちら</a>よりログインしてください</p>
+  </div>
+
+<% end %>
+
+
+</body>
