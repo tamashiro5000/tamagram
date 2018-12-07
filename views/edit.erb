@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/login_v6/images/icons/favicon.ico">
+
+
+
+    <title>tamagram</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css">
+    <link href="https://getbootstrap.com/docs/4.0/examples/album/album.css" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+
+
+  <body class="bg-light">
+    <header>
+      <div class="navbar navbar-light">
+        <div class="container d-flex justify-content-between">
+
+          <a href="/form" class="navbar-brand d-flex">
+            <img src="/icon/<%= @icons['icon_path'] %>" class="icon">
+          </a>
+
+          <a href="/form" class="navbar-brand d-flex form-logo">
+            tamagram
+          </a>
+
+          <a href="/logout" class="navbar-brand d-flex fa fa-sign-out"></a>
+
+        </div>
+      </div>
+    </header>
+
+
+  <body>
+
+    <main role="main">
+
+      <div class="album py-5">
+        <div class="container">
+          <div class="row">
+            <% @posts.each do |post| %>
+              <div class="view col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="card mb-4 box-shadow">
+                  <img src="/image/<%= post['img_path'] %>" style="width: 70%; height: 70%; margin: 0 auto;">
+                  <div class="card-body">
+                    <p class="card-text"><%= post['title'] %></p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <form action="/posts/<%= post['id'] %>/edit" method="POST" enctype="multipart/form-data" autocomplete="off">
+                          <div class="container form-group">
+                            <input type="text" name="title" class="form-control" placeholder="<%= post['title'] %>">
+                            <input type="file" name="file" id="file">
+                            <input type="submit" value="変更する">
+                          </div>
+                        </form>
+                        <div>
+                          <i class="fa fa-thumbs-o-up"><%= @likes %></i>
+                        </div>
+                      </div>
+                      <div>
+                        <% @comments.each do |comment| %>
+                        <img src="/icon/<%= @icons['icon_path'] %>" class="icon">
+                        <p style="font-size: 30px;"><%= comment['comment'] %></p>
+                        <% end %>
+                        <form action="/posts/<%= post['id'] %>/comments" method="POST">
+                          <textarea name="comment" rows="4" cols="40" placeholder="コメントを入力してください。"></textarea><br>
+                          <input type="submit" value="コメント"><input type="reset" value="リセット">
+                        </form>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+      <div class="navbar navbar-light">
+        <div class="container d-flex justify-content-between">
+          <a href="/form" class="navbar-brand d-flex fa fa-arrow-circle-o-left"></a>
+        </div>
+      </div>
+
+
+
+  </body>
+</html>

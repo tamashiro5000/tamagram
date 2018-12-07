@@ -1,15 +1,81 @@
-<h2><%= @message %></h2>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<title>tamagram</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="/login_v6/images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/login_v6/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/login_v6/css/main.css">
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="container-login100 bg-light">
+			<div class="wrap-login100 p-t-25 p-b-20 bg-light">
+
+				<form class="login100-form validate-form bg-light" action="/login" method="POST" autocomplete="off">
+					<span class="login100-form-title p-b-20 logo">
+						tamagram
+					</span>
+
+					<h2 style="color: red; text-align: center;"><%= @login_miss %></h2>
+					<h2 style="color: red; text-align: center;"><%= @logout %></h2>
+					<h2 style="color: red; text-align: center;"><%= @signup %></h2>
+
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+						<input class="input100" type="text" name="login_name">
+						<span class="focus-input100" data-placeholder="Username"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+						<input class="input100" type="password" name="login_pass">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<ul class="login-more p-t-90">
+						<li class="m-b-8">
+							<span class="txt1">
+								Don’t have an account?
+							</span>
+
+							<a href="/signup" class="txt2">
+								Sign up
+							</a>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
 
 
-<div class="container form-group col-lg-6 col-md-8 col-12">
-  <form action="/login" method="POST" autocomplete="off">
-    <input type="text" name="name" class="form-control" id="name" placeholder="名前">
-    <input type="password" name="password" class="form-control" id="password" placeholder="パスワード">
+	<div id="dropDownSelect1"></div>
 
-    <input type="submit" value="ログイン">
-  </form>
-</div>
+	<script src="/login_v6/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/login_v6/vendor/animsition/js/animsition.min.js"></script>
+	<script src="/login_v6/vendor/bootstrap/js/popper.js"></script>
+	<script src="/login_v6/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/login_v6/vendor/select2/select2.min.js"></script>
+	<script src="/login_v6/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/login_v6/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="/login_v6/vendor/countdowntime/countdowntime.js"></script>
+	<script src="/login_v6/js/main.js"></script>
 
-<div class="hoge">
-  <a href="/">戻る</a>
-</div>
+</body>
+</html>

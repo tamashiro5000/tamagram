@@ -20,7 +20,36 @@ form {
   margin-bottom: 50px;
 }
 
+.card-text {
+  font-size: 30px;
+}
+
+.icon {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+}
+
 .hoge {
   font-size: 30px;
   text-align: center;
+}
+
+.logo {
+  font-family: Billabong;
+  font-size: 100px;
+  text-align: center;
+}
+
+.form-logo {
+  font-family: Billabong;
+  font-size: 50px;
+}
+
+.fa {
+  font-size: 40px;
+}
+
+.fa-arrow-circle-o-left {
+  font-size: 80px;
 }

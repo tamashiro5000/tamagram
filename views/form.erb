@@ -1,67 +1,104 @@
-  <header>
-    <div class="navbar navbar-dark bg-primary box-shadow">
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/login_v6/images/icons/favicon.ico">
+
+
+
+    <title>tamagram</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css">
+    <link href="https://getbootstrap.com/docs/4.0/examples/album/album.css" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+
+
+  <body class="bg-light">
+
+    <header>
+      <div class="navbar navbar-light">
         <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                <strong>Tamagram</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="fa fa-sign-out"></span>
-            </button>
+
+          <a href="/form" class="navbar-brand d-flex">
+            <img src="/icon/<%= @icons['icon_path'] %>" class="icon">
+          </a>
+
+          <a href="/form" class="navbar-brand d-flex form-logo">
+            tamagram
+          </a>
+
+          <a href="/logout" class="navbar-brand d-flex fa fa-sign-out"></a>
+
         </div>
-    </div>
-  </header>
+      </div>
+    </header>
+
+    <h2><%= @login %></h2>
 
 
+    <main role="main">
 
-
-<h2><%= @message %></h2>
-
-
-
-<% if @name %>
-
-
-
-
-  <div class="hoge">
-    <p><%= @name %>さん、こんにちわ</p>
-  </div>
-
-
-  <main role="main">
-
-      <section class="jumbotron text-center">
-          <div class="container">
-            <form action="/form" method="POST" enctype="multipart/form-data" autocomplete="off">
-              <div class="container form-group">
-                <input type="text" name="title" class="form-control" placeholder="タイトルを入力してください。">
-                <input type="file" name="file" id="file" required>
-                <input type="submit" value="投稿する">
-              </div>
-            </form>
-          </div>
+      <section class="jumbotron text-center bg-light">
+        <div class="container bg-light">
+          <form action="/form" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <div class="container form-group">
+              <input type="text" name="title" class="form-control" placeholder="タイトルを入力してください。" required="required">
+              <input type="file" name="file" id="file" required="required">
+              <input type="submit" value="投稿する">
+            </div>
+          </form>
+        </div>
       </section>
 
 
-
-      <div class="album py-5 bg-light">
+      <div class="album py-5">
         <div class="container">
           <div class="row">
             <% @posts.each do |post| %>
               <div class="view col-6 col-md-6 col-lg-4 col-xl-4">
                 <div class="card mb-4 box-shadow">
-                  <img src="/image/<%= post['image'] %>">
-                    <div class="card-body">
-                      <p class="card-text"><%= post['title'] %></p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
+                  <a href="/posts/<%= post['id'] %>/edit"><img src="/image/<%= post['img_path'] %>"></a>
+                  <div class="card-body">
+                    <p class="card-text"><%= post['title'] %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+
+                      <div class="btn-group">
+                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button> -->
+
+
+                        <form action="/posts/<%= post['id'] %>/delete" method="POST">
+                          <input type="submit" value="Delete" class="btn btn-sm btn-outline-secondary">
+                        </form>
+
+                        <form action="/posts/<%= post['id'] %>/like" method="POST">
+                          <input type="submit" value="like" class="btn btn-sm btn-outline-secondary">
+                        </form>
+
                       </div>
+                      <i class="fa fa-thumbs-o-up"><%= post['like_count'] %></i>
                     </div>
+
+
+
+
+
+
+                    <!-- <small class="text-muted"><%= post['date_info']%></small> -->
+                  </div>
                 </div>
               </div>
             <% end %>
@@ -69,25 +106,7 @@
         </div>
       </div>
 
+    </main>
 
-  </main>
-
-
-
-
-
-  <footer class="hoge">
-    <a href="/logout">ログアウト</a>
-  </footer>
-
-
-<% else %>
-
-  <div class="hoge">
-    <p><a href="/login">こちら</a>よりログインしてください</p>
-  </div>
-
-<% end %>
-
-
-</body>
+  </body>
+</html>

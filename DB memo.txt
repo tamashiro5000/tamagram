@@ -1,0 +1,38 @@
+CREATE TABLE posts (
+  id int(3) auto_increment,
+  title varchar(256),
+  img_path varchar(256),
+  date_info datetime,
+  primary key(id)
+);
+
+CREATE TABLE posts (id int(3) auto_increment,title varchar(256),img_path varchar(256),date_info datetime,primary key(id));
+
+
+CREATE TABLE users (
+id int(11) auto_increment,
+user_name varchar(256),
+user_pass varchar(256),
+primary key(id)
+);
+
+CREATE TABLE users (id int(11) auto_increment,user_name varchar(256),user_pass varchar(256),primary key(id));
+
+CREATE TABLE likes (
+id int(11) auto_increment,
+user_id int(11),
+post_id int(11),
+primary key(id)
+);
+
+CREATE TABLE likes (id int(11) auto_increment,user_id int(11),post_id int(11),primary key(id));
+
+
+CREATE TABLE comments (
+id int(11) auto_increment,
+user_id int(11),
+user_name varchar(256),
+post_id int(11),
+comment varchar(256),
+primary key(id)
+);
